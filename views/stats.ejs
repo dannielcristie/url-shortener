@@ -3,9 +3,21 @@
 
 <head>
     <title>
-        Shorten URL
-    </title>
+        <&= title%>
+     </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+        function copyLink() {
+            let copyText = document.getElementById("copyText")
+            console.log(copyLink)
+            var selection = window.getSelection();
+            var range = document.createRange();
+            range.selectNodeContents(copyText);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+        }
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,11 +39,12 @@
 
         <div class="stats">
             <p>
-                <b>
+                <b id="copyText">
                     <%= process.env.DOMAIN %><%= code %>
                 </b>
             </p>
-
+            <input type="button" class="btn btn-primary" onclick="copyLink()" data-toggle="tooltip"
+                title="Copy to Clipboard" value="copy link" readonly />
             <p>
                 Redirect to : <br>
                 <%= url%>
