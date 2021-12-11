@@ -2,8 +2,6 @@
   "name": "url-shortener",
   "version": "0.0.0",
   "private": true,
-  "homepage": "http://dannielcristie.github.io/url-shortener",
-
   "scripts": {
     "start": "npx nodemon -r dotenv/config ./bin/www"
   },
