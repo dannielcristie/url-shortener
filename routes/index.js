@@ -38,15 +38,20 @@ function generateCode() {
 
 
 router.post('/new', async(req, res, next) => {
-  const url = req.body.url;
-  const code = generateCode();
 
-  const result = await Link.create({
-    url,
-    code
-  }); 
-
-  res.render('stats',result.dataValues);
+  try {
+    const url = req.body.url;
+    const code = generateCode();
+  
+    const result = await Link.create({
+      url,
+      code
+    }); 
+  
+    res.render('stats',result.dataValues);
+  } catch (error) {
+    res.render('/')
+  }
 
 });
 
